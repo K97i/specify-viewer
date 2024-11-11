@@ -1,0 +1,18 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url("/JetBrainsMono.ttf");
+	font-display: swap;
+}
+
+:root [data-theme='skeleton'] {
+	--theme-font-family-base: 'JetBrains Mono', monospace;
+	--theme-rounded-container: 8px;
+}
+
+.container {
+	max-width: none;
+}
