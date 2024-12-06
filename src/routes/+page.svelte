@@ -2,21 +2,25 @@
   import { FileDropzone, getToastStore } from '@skeletonlabs/skeleton';
   import type { ToastSettings } from '@skeletonlabs/skeleton';
   import { goto } from '$app/navigation';
-  import { profileStore } from './shared/profile-store';
+  import { profileData } from './shared/profile-store';
 
   const toastStore = getToastStore();
   let profile: FileList;
   
   async function dropHandler() {
+
+    let jsonData = await JSON.parse(await profile[0].text());
+    profileData.set(jsonData);
+    
+    // Toast
     const t: ToastSettings = {
-      message: "Loaded " + profile[0].name,
+      message: "Loaded profile!",
       hideDismiss: true,
       timeout: 2000,
       background: 'bg-primary-500',
     };
     toastStore.trigger(t);
     
-    profileStore.set(profile[0]);
     goto('/viewer');
   };
 </script>
