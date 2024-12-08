@@ -11,13 +11,19 @@
 
     let jsonData = await JSON.parse(await profile[0].text());
     profileData.set(jsonData);
-    
+
+    // Clear filelist
+    const dropzone = document.getElementById('dropzone') as HTMLInputElement;
+    if (dropzone) {
+      dropzone.value = "";
+    }
+
     // Toast
     const t: ToastSettings = {
       message: "Loaded profile!",
       hideDismiss: true,
       timeout: 2000,
-      background: 'bg-primary-500',
+      background: 'bg-success-900',
     };
     toastStore.trigger(t);
     
@@ -32,7 +38,7 @@
       
       <img class="w-6/12" src="sfy.png" alt="Specify Logo"/>
       
-      <FileDropzone accept="application/json" class="w-6/12" name="files" bind:files={profile} on:change={ dropHandler }>
+      <FileDropzone id="dropzone" accept="application/json" class="w-6/12" name="files" bind:files={profile} on:change={ dropHandler }>
         <svelte:fragment slot="lead">(icon)</svelte:fragment>
         <svelte:fragment slot="message">(message)</svelte:fragment>
         <svelte:fragment slot="meta">(meta)</svelte:fragment>
@@ -43,5 +49,5 @@
 </div>
 
 <style>
-
+  
 </style>

@@ -13,6 +13,18 @@
 	--theme-rounded-container: 8px;
 }
 
+body { 
+	@apply bg-surface-50 dark:bg-surface-500; 
+}
+
+span {
+	color: white;
+}
+
+p {
+	@apply text-gray-400; 
+}
+
 .container {
 	max-width: none;
 }

@@ -1,4 +1,4 @@
-import { profileData } from "../../shared/profile-store";
+import { jsonData } from "../../shared/profile-export";
 
 async function retrieveEOLData() {
     let url = "https://endoflife.date/api/windows.json"
@@ -63,11 +63,6 @@ async function makeValidList() {
 
 async function determineEOLness(){
     let versionArray = await makeValidList()
-
-    let jsonData: any
-    profileData.subscribe((data)=>{
-        jsonData = data
-    })
 
     let profileVersion = jsonData["BasicInfo"]["Version"]
     let thisBuildInt = Number(profileVersion.substring(5))
